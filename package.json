@@ -1,0 +1,13 @@
+{
+    "name": "projeto-rt",
+    "private": true,
+    "workspaces": [
+        "frontend-rt",
+        "backend-rt"
+    ],
+    "scripts": {
+        "build:frontend": "cd frontend-rt && ng build --prod",
+        "build:backend": "cd backend-rt && npm run build",
+        "build": "npm run build:frontend && npm run build:backend"
+    }
+}
