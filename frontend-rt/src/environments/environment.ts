@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: '/api/quadros',
+  apiUrl: 'http://localhost:3333/api/quadros',
 };

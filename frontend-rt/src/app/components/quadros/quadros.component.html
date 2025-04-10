@@ -1,1 +1,63 @@
-<p>quadros works!</p>
+<!-- src/app/components/quadros/quadros.component.html -->
+<div class="container-fluid bg-dark text-light p-0">
+  <h5 class="text-center w-100 pt-2">Parecer procedimentos de Baixa de Responsabilidade Técnica</h5>
+  <button class="btn btn-primary mb-3" (click)="openModal(modalContent)">Adicionar Quadro</button>
+
+  <div class="d-flex flex-wrap">
+    @for(quadro of quadros; track quadro._id){
+        <fieldset class="bg-transparent shadow col-lg-3 border border-{{quadro.color}} p-1 m-2">
+          <legend class="text-center rounded">{{ quadro.title }}</legend>
+          <p>Local: <strong>{{ quadro.local }}</strong> Situação: <strong>{{ quadro.situacao }}</strong> Julgamento: <strong>{{ quadro.julgamento }}</strong></p>
+          <textarea class="area bg-transparent text-dark" readonly>{{ quadro.content }}</textarea>
+          <div class="d-flex justify-content-between mt-2">
+            <button class="btn btn-outline-success" (click)="copyText(quadro.content)"><i class="fa fa-copy">Copiar</i></button>
+            <button class="btn btn-outline-warning" (click)="openModal(modalContent, quadro)"><i class="fa fa-edit">Editar</i></button>
+            <button class="btn btn-outline-danger" (click)="deleteQuadro(quadro._id!)"><i class="fa fa-trash"></i>Excluir</button>
+          </div>
+        </fieldset>
+    }
+  </div>
+</div>
+
+<ng-template #modalContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">{{ selectedQuadro ? 'Editar Quadro' : 'Adicionar Quadro' }}</h4>
+    <button type="button" class="close" (click)="modal.dismiss()">&times;</button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label>Título</label>
+        <input class="form-control" [(ngModel)]="newQuadro.title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label>Conteúdo</label>
+        <textarea class="form-control" [(ngModel)]="newQuadro.content" name="content" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Local</label>
+        <input class="form-control" [(ngModel)]="newQuadro.local" name="local" required>
+      </div>
+      <div class="form-group">
+        <label>Situação</label>
+        <input class="form-control" [(ngModel)]="newQuadro.situacao" name="situacao" required>
+      </div>
+      <div class="form-group">
+        <label>Julgamento</label>
+        <input class="form-control" [(ngModel)]="newQuadro.julgamento" name="julgamento" required>
+      </div>
+      <div class="form-group">
+        <label>Cor</label>
+        <select class="form-control" [(ngModel)]="newQuadro.color" name="color">
+          <option value="light">Light</option>
+          <option value="danger">Danger</option>
+          <option value="warning">Warning</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="saveQuadro()">Salvar</button>
+  </div>
+</ng-template>
