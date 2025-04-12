@@ -21,6 +21,7 @@ export class QuadrosService {
   }
 
   createQuadro(quadro: Quadro): Observable<Quadro> {
+    delete quadro._id;
     return this.http.post<Quadro>(this.apiUrl, quadro);
   }
 

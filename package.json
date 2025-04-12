@@ -6,7 +6,7 @@
         "backend-rt"
     ],
     "scripts": {
-        "build:frontend": "cd frontend-rt && ng build --prod",
+        "build:frontend": "cd frontend-rt && ng build",
         "build:backend": "cd backend-rt && npm run build",
         "build": "npm run build:frontend && npm run build:backend"
     }

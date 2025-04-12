@@ -1,8 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, ObjectId } from 'mongoose';
 
 @Schema()
 export class Quadro extends Document {
+
+    declare _id: ObjectId;
+
     @Prop({ required: true })
     title: string;
 

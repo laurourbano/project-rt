@@ -1,14 +1,14 @@
 <!-- src/app/components/quadros/quadros.component.html -->
-<div class="container-fluid bg-dark text-light p-0">
+<div class="container-fluid bg-dark text-light p-0 d-flex flex-column">
   <h5 class="text-center w-100 pt-2">Parecer procedimentos de Baixa de Responsabilidade Técnica</h5>
-  <button class="btn btn-primary mb-3" (click)="openModal(modalContent)">Adicionar Quadro</button>
+  <button class="btn btn-primary mb-3 w-25 align-self-center" (click)="openModal(modalContent)">Adicionar Quadro</button>
 
-  <div class="d-flex flex-wrap">
+  <div class="d-flex flex-wrap justify-content-center">
     @for(quadro of quadros; track quadro._id){
         <fieldset class="bg-transparent shadow col-lg-3 border border-{{quadro.color}} p-1 m-2">
           <legend class="text-center rounded">{{ quadro.title }}</legend>
           <p>Local: <strong>{{ quadro.local }}</strong> Situação: <strong>{{ quadro.situacao }}</strong> Julgamento: <strong>{{ quadro.julgamento }}</strong></p>
-          <textarea class="area bg-transparent text-dark" readonly>{{ quadro.content }}</textarea>
+          <textarea class="area bg-transparent text-light" readonly>{{ quadro.content }}</textarea>
           <div class="d-flex justify-content-between mt-2">
             <button class="btn btn-outline-success" (click)="copyText(quadro.content)"><i class="fa fa-copy">Copiar</i></button>
             <button class="btn btn-outline-warning" (click)="openModal(modalContent, quadro)"><i class="fa fa-edit">Editar</i></button>
