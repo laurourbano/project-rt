@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "postinstall": "npm install --prefix frontend-rt && npm install --prefix backend-rt"
   },
   "private": true,
   "dependencies": {
