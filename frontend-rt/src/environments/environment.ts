@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'http://localhost:3333/api/quadros',
+  apiUrl: 'https://backend-rt-vria.vercel.app/',
 };
