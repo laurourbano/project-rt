@@ -6,8 +6,6 @@
         "backend-rt"
     ],
     "scripts": {
-        "build:frontend": "cd frontend-rt && ./node_modules/.bin/ng build",
-        "build:backend": "cd backend-rt && npm run build",
-        "build": "npm run build:frontend && npm run build:backend"
+        "build": "cd frontend-rt && npm run build && cd ../backend-rt && npm run build"
     }
 }
